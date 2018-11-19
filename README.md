@@ -1,6 +1,6 @@
 # with-immutable-props-to-js
 
-[![Builds](https://img.shields.io/circleci/project/github/tophat/with-immutable-props-to-js.svg)](https://circleci.com/gh/tophat/with-immutable-props-to-js) [![codecov](https://codecov.io/gh/tophat/with-immutable-props-to-js/branch/master/graph/badge.svg)](https://codecov.io/gh/tophat/with-immutable-props-to-js) [![Greenkeeper badge](https://badges.greenkeeper.io/tophat/with-immutable-props-to-js.svg)](https://greenkeeper.io/) [![All Contributors](https://img.shields.io/badge/all_contributors-3-orange.svg?style=flat-square)](#contributors)
+[![npm](https://img.shields.io/npm/v/with-immutable-props-to-js.svg)](https://www.npmjs.com/package/with-immutable-props-to-js) [![Builds](https://img.shields.io/circleci/project/github/tophat/with-immutable-props-to-js.svg)](https://circleci.com/gh/tophat/with-immutable-props-to-js) [![codecov](https://codecov.io/gh/tophat/with-immutable-props-to-js/branch/master/graph/badge.svg)](https://codecov.io/gh/tophat/with-immutable-props-to-js) [![Greenkeeper badge](https://badges.greenkeeper.io/tophat/with-immutable-props-to-js.svg)](https://greenkeeper.io/) [![All Contributors](https://img.shields.io/badge/all_contributors-3-orange.svg?style=flat)](#contributors)
 
 A higher-order component for keeping Immutable objects outside your presentational components
 
@@ -66,9 +66,9 @@ The need for this higher-order component stems from the simultaneous use of seve
 
 When using these technologies together, there are some important rules of thumb you should follow:
 
-- _*Don't us Immutable.js in your presentational (dumb) components*_: this makes your components more reusable, as their interfaces don't mandate the use of Immutable.js
-- _*Don't call .toJS() on Immutable objects in selectors*_: .toJS() will return a brand new object every time, and cause your React components to re-render even if your app state doesn't change; return Immutable objects from all your (non-primitive type) selectors for consistency
-- _*Don't call .toJS() on Immutable objects in mapStateToProps*_: for the same reason as above, doing this causes unnecessary re-renders
+- **Don't us Immutable.js in your presentational (dumb) components**: this makes your components more reusable, as their interfaces don't mandate the use of Immutable.js
+- **Don't call .toJS() on Immutable objects in selectors**: .toJS() will return a brand new object every time, and cause your React components to re-render even if your app state doesn't change; return Immutable objects from all your (non-primitive type) selectors for consistency
+- **Don't call .toJS() on Immutable objects in mapStateToProps**: for the same reason as above, doing this causes unnecessary re-renders
 
 At this point, the keen observer will have realized: _there's no way left to get data from selectors into my presentational components_.
 
