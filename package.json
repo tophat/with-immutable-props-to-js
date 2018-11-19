@@ -1,0 +1,30 @@
+{
+  "name": "with-immutable-props-to-js",
+  "version": "0.0.1",
+  "description": "A higher-order component for keeping Immutable objects outside your presentational components",
+  "main": "index.js",
+  "repository": "git@github.com:tophat/with-immutable-props-to-js.git",
+  "author": "Top Hat Monocle Corp. <opensource@tophat.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/core": "^7.1.6",
+    "@babel/preset-env": "^7.1.6",
+    "@babel/preset-react": "^7.0.0",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-jest": "^23.6.0",
+    "enzyme": "^3.7.0",
+    "enzyme-adapter-react-16": "^1.7.0",
+    "immutable": "^4.0.0-rc.12",
+    "jest": "^23.6.0",
+    "react": "^16.6.3",
+    "react-dom": "^16.6.3"
+  },
+  "peerDependencies": {
+    "immutable": ">=3.0.0",
+    "react": ">=15.0.0",
+    "react-dom": ">=15.0.0"
+  },
+  "jest": {
+    "setupTestFrameworkScriptFile": "<rootDir>/tests/setupTestFramework.js"
+  }
+}
