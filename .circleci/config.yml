@@ -19,10 +19,14 @@ jobs:
             - ~/.caches/yarn
       - run:
           name: Run Tests
-          command: yarn test
+          command: yarn test --coverage
       - run:
           name: Run Linting
           command: yarn lint
       - run:
           name: Build Dist Files
           command: yarn build
+      - run:
+          name: Upload Test Coverage
+          command: bash <(curl -s https://codecov.io/bash)
+          when: always
