@@ -22,9 +22,9 @@ const withImmutablePropsToJS = WrappedComponent => {
         return <WrappedComponent {...propsJS} />
     }
 
-    Wrapper.displayName = `withImmutablePropsToJS(${
-        getDisplayName(WrappedComponent)
-    })`
+    Wrapper.displayName = `withImmutablePropsToJS(${getDisplayName(
+        WrappedComponent,
+    )})`
 
     return Wrapper
 }

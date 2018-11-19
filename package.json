@@ -4,13 +4,15 @@
   "description": "A higher-order component for keeping Immutable objects outside your presentational components",
   "main": "lib/index.js",
   "files": [
-      "lib"
+    "lib"
   ],
   "repository": "git@github.com:tophat/with-immutable-props-to-js.git",
   "author": "Top Hat Monocle Corp. <opensource@tophat.com>",
   "license": "MIT",
   "scripts": {
     "test": "jest",
+    "lint": "eslint .",
+    "fix": "eslint --fix .",
     "build": "babel src -d lib"
   },
   "devDependencies": {
@@ -22,8 +24,13 @@
     "babel-jest": "^23.6.0",
     "enzyme": "^3.7.0",
     "enzyme-adapter-react-16": "^1.7.0",
+    "eslint": "^5.9.0",
+    "eslint-config-prettier": "^3.3.0",
+    "eslint-plugin-prettier": "^3.0.0",
+    "eslint-plugin-react": "^7.11.1",
     "immutable": "^4.0.0-rc.12",
     "jest": "^23.6.0",
+    "prettier": "^1.15.2",
     "react": "^16.6.3",
     "react-dom": "^16.6.3"
   },
