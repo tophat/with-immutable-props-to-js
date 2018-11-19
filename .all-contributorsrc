@@ -1,0 +1,42 @@
+{
+  "projectName": "with-immutable-props-to-js",
+  "projectOwner": "tophat",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "msrose",
+      "name": "Michael Rose",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/3495264?v=4",
+      "profile": "http://msrose.github.io",
+      "contributions": [
+        "code",
+        "doc",
+        "infra"
+      ]
+    },
+    {
+      "login": "brandonbaksh",
+      "name": "Brandon Baksh",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/39271619?v=4",
+      "profile": "https://www.linkedin.com/in/brandonbaksh/",
+      "contributions": [
+        "infra"
+      ]
+    },
+    {
+      "login": "greenkeeper[bot]",
+      "name": "greenkeeper[bot]",
+      "avatar_url": "https://avatars3.githubusercontent.com/in/505?v=4",
+      "profile": "https://github.com/apps/greenkeeper",
+      "contributions": [
+        "infra"
+      ]
+    }
+  ]
+}
