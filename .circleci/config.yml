@@ -17,12 +17,12 @@ jobs:
           key: yarn-packages-{{ checksum "yarn.lock" }}
           paths:
             - ~/.caches/yarn
-      - test:
+      - run:
           name: Run Tests
           command: yarn test
-      - lint:
+      - run:
           name: Run Linting
           command: yarn lint
-      - build:
+      - run:
           name: Build Dist Files
           command: yarn build
