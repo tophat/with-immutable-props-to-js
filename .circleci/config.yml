@@ -2,12 +2,31 @@ version: 2
 jobs:
   build:
     docker:
-      - image: debian:stretch
+      - image: circleci/node:10.13.0
     steps:
       - checkout
+      - restore_cache:
+          name: Restore Yarn Package Cache
+          keys:
+            - yarn-packages-{{ checksum "yarn.lock" }}
       - run:
-          name: Greeting
-          command: echo Hello, world.
+          name: Install Dependencies
+          command: yarn install --frozen-lockfile
+      - save_cache:
+          name: Save Yarn Package Cache
+          key: yarn-packages-{{ checksum "yarn.lock" }}
+          paths:
+            - ~/.caches/yarn
       - run:
-          name: Print the Current Time
-          command: date
+          name: Run Tests
+          command: yarn test --coverage
+      - run:
+          name: Run Linting
+          command: yarn lint
+      - run:
+          name: Build Dist Files
+          command: yarn build
+      - run:
+          name: Upload Test Coverage
+          command: bash <(curl -s https://codecov.io/bash)
+          when: always
