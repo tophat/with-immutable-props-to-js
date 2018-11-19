@@ -16,7 +16,9 @@
     "build": "babel src -d lib",
     "contrib:add": "all-contributors add",
     "contrib:generate": "all-contributors generate",
-    "contrib:check": "all-contributors check"
+    "contrib:check": "all-contributors check",
+    "prepack": "yarn clean && yarn build",
+    "clean": "rm -rf lib"
   },
   "devDependencies": {
     "@babel/cli": "^7.1.5",
