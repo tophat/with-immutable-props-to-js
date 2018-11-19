@@ -1,5 +1,5 @@
 # with-immutable-props-to-js
 
-[![CircleCI](https://circleci.com/gh/tophat/with-immutable-props-to-js/tree/master.svg?style=svg)](https://circleci.com/gh/tophat/with-immutable-props-to-js/tree/master)
+[![Builds](https://img.shields.io/circleci/project/github/tophat/with-immutable-props-to-js.svg)](https://circleci.com/gh/tophat/with-immutable-props-to-js)
 
 A higher-order component for keeping Immutable objects outside your presentational components
