@@ -20,8 +20,6 @@ commands:
         type: boolean
         default: false
     steps:
-      - attach_workspace:
-          at: ~/repo
       - run:
           name: Install react<< parameters.react_version >> and immutable<< parameters.immutable_version >>
           command: yarn add --dev react<< parameters.react_version >> react-dom<< parameters.react_version >> immutable<< parameters.immutable_version >>
@@ -70,8 +68,9 @@ jobs:
           paths: .
   test:
     <<: *defaults
-    parallelism: 4
     steps:
+      - attach_workspace:
+          at: ~/repo
       - run_tests:
           react_version: "@^15"
           immutable_version: "@^3"
