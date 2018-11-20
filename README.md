@@ -35,7 +35,7 @@ Example:
 ```javascript
 import React from 'react'
 import { connect } from 'react-redux'
-import { withImmutablePropsToJS } from 'with-immutable-props-to-js'
+import withImmutablePropsToJS from 'with-immutable-props-to-js'
 
 const MyDumbComponent = props => {
    // ...
