@@ -46,21 +46,22 @@ jobs:
         description: Additional Test Flags
         type: string
         default: ""
-    - attach_workspace:
-        at: ~/repo
-    - run:
-        name: Install Specific React Version
-        command: yarn add --dev react<< parameters.react_version >> react-dom<< parameters.react_version >>
-    - run:
-        name: Install Specific Immutable Version
-        command: yarn add --dev immutable<< parameters.immutable_version >>
-    - run:
-        name: Run Tests
-        command: yarn test << parameters.flags >>
-    - run:
-        name: Upload Test Coverage
-        command: bash <(curl -s https://codecov.io/bash)
-        when: always
+    steps:
+      - attach_workspace:
+          at: ~/repo
+      - run:
+          name: Install Specific React Version
+          command: yarn add --dev react<< parameters.react_version >> react-dom<< parameters.react_version >>
+      - run:
+          name: Install Specific Immutable Version
+          command: yarn add --dev immutable<< parameters.immutable_version >>
+      - run:
+          name: Run Tests
+          command: yarn test << parameters.flags >>
+      - run:
+          name: Upload Test Coverage
+          command: bash <(curl -s https://codecov.io/bash)
+          when: always
   deploy:
     <<: *defaults
     steps:
