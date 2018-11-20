@@ -37,11 +37,9 @@ jobs:
       react_version:
         description: Version of React to install
         type: string
-        default: ""
       immutable_version:
         description: Version of Immutable to install
         type: string
-        default: ""
       flags:
         description: Additional Test Flags
         type: string
@@ -110,19 +108,21 @@ workflows:
           react_version: "@^15"
           immutable_version: "@^4.0.0-rc.1"
       - test:
-          name: react-latest-immutable-latest
+          name: react-16-immutable-4
           requires:
             - build
           filters:
             tags:
               only: /^v.*/
+          react_version: "@^16"
+          immutable_version: "@^4.0.0-rc.1"
           flags: "--coverage"
       - deploy:
           requires:
             - react-15-immutable-3
             - react-16-immutable-3
             - react-15-immutable-4
-            - react-latest-immutable-latest
+            - react-16-immutable-4
           filters:
             tags:
               only: /^v.*/
