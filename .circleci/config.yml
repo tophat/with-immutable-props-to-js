@@ -38,9 +38,10 @@ commands:
                 when: always
       - unless:
           condition: << parameters.test_coverage >>
-          - run:
-              name: Run Tests for react<< parameters.react_version>> and immutable<< parameters.immutable_version >>
-              command: yarn test
+          steps:
+            - run:
+                name: Run Tests for react<< parameters.react_version>> and immutable<< parameters.immutable_version >>
+                command: yarn test
 
 jobs:
   build:
