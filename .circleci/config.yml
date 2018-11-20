@@ -87,14 +87,14 @@ workflows:
             tags:
               only: /^v.*/
           react_version: "@^15"
-          immutable_version: "@^4"
+          immutable_version: "@^4.0.0-rc.1"
       - build:
           name: react-16-immutable-4
           filters:
             tags:
               only: /^v.*/
           react_version: "@^16"
-          immutable_version: "@^4"
+          immutable_version: "@^4.0.0-rc.1"
       - deploy:
           requires:
             - react-15-immutable-3
