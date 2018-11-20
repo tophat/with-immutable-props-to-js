@@ -25,7 +25,7 @@ jobs:
             - yarn-packages-{{ checksum "yarn.lock" }}
       - run:
           name: Install Dependencies
-          command: yarn install --frozen-lockfile
+          command: yarn add --frozen-lockfile
       - save_cache:
           name: Save Yarn Package Cache
           key: yarn-packages-{{ checksum "yarn.lock" }}
@@ -33,10 +33,10 @@ jobs:
             - ~/.caches/yarn
       - run:
           name: Install Specific React Version
-          command: yarn install react<< parameters.react_version>>
+          command: yarn add react<< parameters.react_version>>
       - run:
           name: Install Specific Immutable Version
-          command: yarn install react<< parameters.immutable_version>>
+          command: yarn add react<< parameters.immutable_version>>
       - run:
           name: Run Tests
           command: yarn test --coverage
