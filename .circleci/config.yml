@@ -122,7 +122,7 @@ workflows:
             - react-15-immutable-3
             - react-16-immutable-3
             - react-15-immutable-4
-            - react-16-immutable-4
+            - react-latest-immutable-latest
           filters:
             tags:
               only: /^v.*/
