@@ -15,24 +15,32 @@ commands:
       immutable_version:
         description: Version of Immutable to install
         type: string
-      flags:
+      test_coverage:
         description: Additional Test Flags
-        type: string
-        default: ""
+        type: boolean
+        default: false
     steps:
       - run:
           name: Install react<< parameters.react_version >>
           command: yarn add --dev react<< parameters.react_version >> react-dom<< parameters.react_version >>
       - run:
-          name: Install immutable<< paramters.immutable_version >>
+          name: Install immutable<< parameters.immutable_version >>
           command: yarn add --dev immutable<< parameters.immutable_version >>
-      - run:
-          name: Run Tests
-          command: yarn test << parameters.flags >>
-      - run:
-          name: Upload Test Coverage
-          command: bash <(curl -s https://codecov.io/bash)
-          when: always
+      - when:
+          condition: << parameters.test_coverage >>
+          steps:
+            - run:
+                name: Run Tests for react<< parameters.react_version>> and immutable<< parameters.immutable_version >>
+                command: yarn test --coverage
+            - run:
+                name: Upload Test Coverage
+                command: bash <(curl -s https://codecov.io/bash)
+                when: always
+      - unless:
+          condition: << parameters.test_coverage >>
+          - run:
+              name: Run Tests for react<< parameters.react_version>> and immutable<< parameters.immutable_version >>
+              command: yarn test
 
 jobs:
   build:
@@ -77,7 +85,7 @@ jobs:
       - run_tests:
           react_version: "@^16"
           immutable_version: "@^4.0.0-rc.1"
-          flags: "--coverage"
+          test_coverage: true
   deploy:
     <<: *defaults
     steps:
