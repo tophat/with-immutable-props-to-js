@@ -1,4 +1,4 @@
-version: 2
+version: 2.1
 
 defaults: &defaults
   working_directory: ~/repo
@@ -8,6 +8,15 @@ defaults: &defaults
 jobs:
   build:
     <<: *defaults
+    parameters:
+      react_version:
+        description: Version of React to install
+        type: string
+        default: ""
+      immutable_version:
+        description: Version of Immutable to install
+        type: string
+        default: ""
     steps:
       - checkout
       - restore_cache:
@@ -22,6 +31,12 @@ jobs:
           key: yarn-packages-{{ checksum "yarn.lock" }}
           paths:
             - ~/.caches/yarn
+      - run:
+          name: Install Specific React Version
+          command: yarn install react<< parameters.react_version>>
+      - run:
+          name: Install Specific Immutable Version
+          command: yarn install react<< parameters.immutable_version>>
       - run:
           name: Run Tests
           command: yarn test --coverage
@@ -55,12 +70,39 @@ workflows:
   build-deploy:
     jobs:
       - build:
+          name: react-15-immutable-3
           filters:
             tags:
               only: /^v.*/
+          react_version: "@^15"
+          immutable_version: "@^3"
+      - build:
+          name: react-16-immutable-3
+          filters:
+            tags:
+              only: /^v.*/
+          react_version: "@^16"
+          immutable_version: "@^3"
+      - build:
+          name: react-15-immutable-4
+          filters:
+            tags:
+              only: /^v.*/
+          react_version: "@^15"
+          immutable_version: "@^4"
+      - build:
+          name: react-16-immutable-4
+          filters:
+            tags:
+              only: /^v.*/
+          react_version: "@^16"
+          immutable_version: "@^4"
       - deploy:
           requires:
-            - build
+            - react-15-immutable-3
+            - react-16-immutable-3
+            - react-15-immutable-4
+            - react-16-immutable-4
           filters:
             tags:
               only: /^v.*/
