@@ -68,20 +68,16 @@ jobs:
       - run_tests:
           react_version: "@^15"
           immutable_version: "@^3"
-          when: always
       - run_tests:
           react_version: "@^16"
           immutable_version: "@^3"
-          when: always
       - run_tests:
           react_version: "@^15"
           immutable_version: "@^4.0.0-rc.1"
-          when: always
       - run_tests:
           react_version: "@^16"
           immutable_version: "@^4.0.0-rc.1"
           flags: "--coverage"
-          when: always
   deploy:
     <<: *defaults
     steps:
