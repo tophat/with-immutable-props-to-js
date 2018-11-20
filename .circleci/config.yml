@@ -5,6 +5,35 @@ defaults: &defaults
   docker:
     - image: circleci/node:10.13.0
 
+commands:
+  run_tests:
+    description: Run tests using specific versions of React and Immutable
+    parameters:
+      react_version:
+        description: Version of React to install
+        type: string
+      immutable_version:
+        description: Version of Immutable to install
+        type: string
+      flags:
+        description: Additional Test Flags
+        type: string
+        default: ""
+    steps:
+      - run:
+          name: Install Specific React Version
+          command: yarn add --dev react<< parameters.react_version >> react-dom<< parameters.react_version >>
+      - run:
+          name: Install Specific Immutable Version
+          command: yarn add --dev immutable<< parameters.immutable_version >>
+      - run:
+          name: Run Tests
+          command: yarn test << parameters.flags >>
+      - run:
+          name: Upload Test Coverage
+          command: bash <(curl -s https://codecov.io/bash)
+          when: always
+
 jobs:
   build:
     <<: *defaults
@@ -33,33 +62,22 @@ jobs:
           paths: .
   test:
     <<: *defaults
-    parameters:
-      react_version:
-        description: Version of React to install
-        type: string
-      immutable_version:
-        description: Version of Immutable to install
-        type: string
-      flags:
-        description: Additional Test Flags
-        type: string
-        default: ""
     steps:
       - attach_workspace:
           at: ~/repo
-      - run:
-          name: Install Specific React Version
-          command: yarn add --dev react<< parameters.react_version >> react-dom<< parameters.react_version >>
-      - run:
-          name: Install Specific Immutable Version
-          command: yarn add --dev immutable<< parameters.immutable_version >>
-      - run:
-          name: Run Tests
-          command: yarn test << parameters.flags >>
-      - run:
-          name: Upload Test Coverage
-          command: bash <(curl -s https://codecov.io/bash)
-          when: always
+      - run_tests:
+          react_version: "@^15"
+          immutable_version: "@^3"
+      - run_tests:
+          react_version: "@^16"
+          immutable_version: "@^3"
+      - run_tests:
+          react_version: "@^15"
+          immutable_version: "@^4.0.0-rc.1"
+      - run_tests:
+          react_version: "@^16"
+          immutable_version: "@^4.0.0-rc.1"
+          flags: "--coverage"
   deploy:
     <<: *defaults
     steps:
@@ -73,56 +91,22 @@ jobs:
           command: npm publish
 
 workflows:
-  version: 2
-  build-deploy:
+  version: 2.1
+  build-test-deploy:
     jobs:
       - build:
           filters:
             tags:
               only: /^v.*/
       - test:
-          name: react-15-immutable-3
           requires:
             - build
           filters:
             tags:
               only: /^v.*/
-          react_version: "@^15"
-          immutable_version: "@^3"
-      - test:
-          name: react-16-immutable-3
-          requires:
-            - build
-          filters:
-            tags:
-              only: /^v.*/
-          react_version: "@^16"
-          immutable_version: "@^3"
-      - test:
-          name: react-15-immutable-4
-          requires:
-            - build
-          filters:
-            tags:
-              only: /^v.*/
-          react_version: "@^15"
-          immutable_version: "@^4.0.0-rc.1"
-      - test:
-          name: react-16-immutable-4
-          requires:
-            - build
-          filters:
-            tags:
-              only: /^v.*/
-          react_version: "@^16"
-          immutable_version: "@^4.0.0-rc.1"
-          flags: "--coverage"
       - deploy:
           requires:
-            - react-15-immutable-3
-            - react-16-immutable-3
-            - react-15-immutable-4
-            - react-16-immutable-4
+            - test
           filters:
             tags:
               only: /^v.*/
