@@ -21,10 +21,10 @@ commands:
         default: ""
     steps:
       - run:
-          name: Install Specific React Version
+          name: Install react<< parameters.react_version >>
           command: yarn add --dev react<< parameters.react_version >> react-dom<< parameters.react_version >>
       - run:
-          name: Install Specific Immutable Version
+          name: Install immutable<< paramters.immutable_version >>
           command: yarn add --dev immutable<< parameters.immutable_version >>
       - run:
           name: Run Tests
@@ -68,16 +68,20 @@ jobs:
       - run_tests:
           react_version: "@^15"
           immutable_version: "@^3"
+          when: always
       - run_tests:
           react_version: "@^16"
           immutable_version: "@^3"
+          when: always
       - run_tests:
           react_version: "@^15"
           immutable_version: "@^4.0.0-rc.1"
+          when: always
       - run_tests:
           react_version: "@^16"
           immutable_version: "@^4.0.0-rc.1"
           flags: "--coverage"
+          when: always
   deploy:
     <<: *defaults
     steps:
