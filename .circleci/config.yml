@@ -8,13 +8,6 @@ defaults: &defaults
 jobs:
   build:
     <<: *defaults
-    parameters:
-      react_version:
-        description: Version of React to install
-        type: string
-      immutable_version:
-        description: Version of Immutable to install
-        type: string
     steps:
       - checkout
       - restore_cache:
@@ -30,27 +23,44 @@ jobs:
           paths:
             - ~/.caches/yarn
       - run:
-          name: Install Specific React Version
-          command: yarn add --dev react<< parameters.react_version >> react-dom<< parameters.react_version >>
-      - run:
-          name: Install Specific Immutable Version
-          command: yarn add --dev immutable<< parameters.immutable_version >>
-      - run:
-          name: Run Tests
-          command: yarn test --coverage
-      - run:
           name: Run Linting
           command: yarn lint
       - run:
           name: Build Dist Files
           command: yarn build
-      - run:
-          name: Upload Test Coverage
-          command: bash <(curl -s https://codecov.io/bash)
-          when: always
       - persist_to_workspace:
           root: ~/repo
           paths: .
+  test:
+    <<: *defaults
+    parameters:
+      react_version:
+        description: Version of React to install
+        type: string
+        default: ""
+      immutable_version:
+        description: Version of Immutable to install
+        type: string
+        default: ""
+      flags:
+        description: Additional Test Flags
+        type: string
+        default: ""
+    - attach_workspace:
+        at: ~/repo
+    - run:
+        name: Install Specific React Version
+        command: yarn add --dev react<< parameters.react_version >> react-dom<< parameters.react_version >>
+    - run:
+        name: Install Specific Immutable Version
+        command: yarn add --dev immutable<< parameters.immutable_version >>
+    - run:
+        name: Run Tests
+        command: yarn test << parameters.flags >>
+    - run:
+        name: Upload Test Coverage
+        command: bash <(curl -s https://codecov.io/bash)
+        when: always
   deploy:
     <<: *defaults
     steps:
@@ -68,33 +78,44 @@ workflows:
   build-deploy:
     jobs:
       - build:
+          filters:
+            tags:
+              only: /^v.*/
+      - test:
           name: react-15-immutable-3
+          requires:
+            - build
           filters:
             tags:
               only: /^v.*/
           react_version: "@^15"
           immutable_version: "@^3"
-      - build:
+      - test:
           name: react-16-immutable-3
+          requires:
+            - build
           filters:
             tags:
               only: /^v.*/
           react_version: "@^16"
           immutable_version: "@^3"
-      - build:
+      - test:
           name: react-15-immutable-4
+          requires:
+            - build
           filters:
             tags:
               only: /^v.*/
           react_version: "@^15"
           immutable_version: "@^4.0.0-rc.1"
-      - build:
-          name: react-16-immutable-4
+      - test:
+          name: react-latest-immutable-latest
+          requires:
+            - build
           filters:
             tags:
               only: /^v.*/
-          react_version: "@^16"
-          immutable_version: "@^4.0.0-rc.1"
+          flags: "--coverage"
       - deploy:
           requires:
             - react-15-immutable-3
