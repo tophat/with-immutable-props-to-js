@@ -31,10 +31,10 @@ jobs:
             - ~/.caches/yarn
       - run:
           name: Install Specific React Version
-          command: yarn add react<< parameters.react_version>>
+          command: yarn add react<< parameters.react_version >> react-dom<< parameters.react_version >>
       - run:
           name: Install Specific Immutable Version
-          command: yarn add immutable<< parameters.immutable_version>>
+          command: yarn add immutable<< parameters.immutable_version >>
       - run:
           name: Run Tests
           command: yarn test --coverage
