@@ -21,13 +21,13 @@ commands:
         default: false
     steps:
       - run:
-          name: Install react<< parameters.react_version >> and immutable<< parameters.immutable_version >>
-          command: yarn add --dev react<< parameters.react_version >> react-dom<< parameters.react_version >> immutable<< parameters.immutable_version >>
+          name: Install react@<< parameters.react_version >> and immutable@<< parameters.immutable_version >>
+          command: yarn add --dev react@<< parameters.react_version >> react-dom@<< parameters.react_version >> immutable@<< parameters.immutable_version >>
       - when:
           condition: << parameters.test_coverage >>
           steps:
             - run:
-                name: Run Tests for react<< parameters.react_version >> and immutable<< parameters.immutable_version >>
+                name: Run Tests for react@<< parameters.react_version >> and immutable@<< parameters.immutable_version >>
                 command: yarn test --coverage
             - run:
                 name: Upload Test Coverage
@@ -37,7 +37,7 @@ commands:
           condition: << parameters.test_coverage >>
           steps:
             - run:
-                name: Run Tests for react<< parameters.react_version >> and immutable<< parameters.immutable_version >>
+                name: Run Tests for react@<< parameters.react_version >> and immutable@<< parameters.immutable_version >>
                 command: yarn test
 
 jobs:
@@ -72,17 +72,17 @@ jobs:
       - attach_workspace:
           at: ~/repo
       - run_tests:
-          react_version: "@^15"
-          immutable_version: "@^3"
+          react_version: "^15"
+          immutable_version: "^3"
       - run_tests:
-          react_version: "@^16"
-          immutable_version: "@^3"
+          react_version: "^16"
+          immutable_version: "^3"
       - run_tests:
-          react_version: "@^15"
-          immutable_version: "@^4.0.0-rc.1"
+          react_version: "^15"
+          immutable_version: "^4.0.0-rc.1"
       - run_tests:
-          react_version: "@^16"
-          immutable_version: "@^4.0.0-rc.1"
+          react_version: "^16"
+          immutable_version: "^4.0.0-rc.1"
           test_coverage: true
   deploy:
     <<: *defaults
