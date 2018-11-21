@@ -4,6 +4,11 @@ defaults: &defaults
   working_directory: ~/repo
   docker:
     - image: circleci/node:10.13.0
+    
+website_docker_defaults: &website_docker_defaults
+  working_directory: ~/repo/website
+  docker:
+    - image: circleci/node:8.11.3
 
 commands:
   run_tests:
@@ -112,8 +117,7 @@ jobs:
           name: Publish New Package Version
           command: npm publish
   website:
-    <<: *defaults
-    working_directory: ~/repo/website
+    <<: *website_docker_defaults
     steps:
       - prep_website_env
       - run: yarn install
@@ -124,8 +128,7 @@ jobs:
           paths:
             - build/
   deploy_website:
-    <<: *defaults
-    working_directory: ~/repo/website
+    <<: *website_docker_defaults
     steps:
       - prep_website_env
       - attach_workspace:
