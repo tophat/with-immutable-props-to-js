@@ -1,4 +1,4 @@
-YVM uses Docusaurus to maintain our documentation website. For more info visit the [Docusaurus Website](https://docusaurus.io)
+with-immutable-props-to-js uses Docusaurus to maintain our documentation website. For more info visit the [Docusaurus Website](https://docusaurus.io)
 
 ## Making Changes
 First, make sure all the dependencies are loaded by running
