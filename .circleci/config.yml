@@ -40,7 +40,7 @@ commands:
                 name: Run Tests for react@<< parameters.react_version >> and immutable@<< parameters.immutable_version >>
                 command: yarn test
   prep_website_env:
-    description: "Prepapres environment with cache"
+    description: Prepapres environment with cache
     steps:
       - checkout:
           path: ~/repo
@@ -48,7 +48,7 @@ commands:
           name: Restore node_modules cache
           key: website-{{ .Branch }}-{{ checksum "yarn.lock" }}
   save_website_cache:
-    description: "Saves environment cache"
+    description: Saves environment cache
     steps:
       - save_cache:
           name: Save node_modules cache
