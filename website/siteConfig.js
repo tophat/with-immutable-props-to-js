@@ -4,7 +4,7 @@ const siteConfig = {
     // For deploy
     //cname: 'yvm.js.org',
     url: 'https://tophat.github.io',
-    baseUrl: '/immutable-props/',
+    baseUrl: '/with-immutable-props-to-js/',
     projectName: 'with-immputable-props-to-js',
     organizationName: 'tophat',
     // End deploy options
