@@ -28,10 +28,10 @@ class Footer extends React.Component {
                         </a>
                     </div>
                     <div className="footer-github">
-                        <a href="https://github.com/tophat/yvm">GitHub</a>
+                        <a href="https://github.com/tophat/with-immutable-props-to-js">GitHub</a>
                         <a
                             className="github-button"
-                            href="https://github.com/tophat/yvm"
+                            href="https://github.com/tophat/with-immutable-props-to-js"
                             data-icon="octicon-star"
                             data-count-href="/facebook/docusaurus/stargazers"
                             data-show-count="true"
