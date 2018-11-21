@@ -41,9 +41,7 @@ describe('withImmutablePropsToJS', () => {
         const MyComponent = () => <div />
         const WrappedComponent = withImmutablePropsToJS(MyComponent)
         const wrapper = mount(<WrappedComponent {...mockProps} />)
-        expect(wrapper.find(MyComponent).prop('mockProps')).toBe(
-            mockProps.mockProps,
-        )
+        expect(wrapper.find(MyComponent).prop('mockProp')).toBe(propValue)
     }
 
     it('leaves function props alone', () => {
@@ -54,12 +52,16 @@ describe('withImmutablePropsToJS', () => {
     it('leaves string props alone', () => {
         expectPropToBeLeftAlone('my great string')
         expectPropToBeLeftAlone('')
+        expectPropToBeLeftAlone('*'.repeat(1000))
     })
 
     it('leaves number props alone', () => {
         expectPropToBeLeftAlone(1337)
         expectPropToBeLeftAlone(0)
         expectPropToBeLeftAlone(1e12)
+        expectPropToBeLeftAlone(1.25)
+        expectPropToBeLeftAlone(-0)
+        expectPropToBeLeftAlone(-5.222)
     })
 
     it('leaves null props alone', () => {
