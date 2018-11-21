@@ -162,3 +162,11 @@ workflows:
               only: /^v.*/
             branches:
               ignore: /.*/
+      - website
+      - deploy_website:
+          requires:
+            - website
+          filters:
+            branches:
+              only:
+                - master
