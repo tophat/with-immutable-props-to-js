@@ -1,9 +1,44 @@
-version: 2
+version: 2.1
 
 defaults: &defaults
   working_directory: ~/repo
   docker:
     - image: circleci/node:10.13.0
+
+commands:
+  run_tests:
+    description: Run tests using specific versions of React and Immutable
+    parameters:
+      react_version:
+        description: Version of React to install
+        type: string
+      immutable_version:
+        description: Version of Immutable to install
+        type: string
+      test_coverage:
+        description: Additional Test Flags
+        type: boolean
+        default: false
+    steps:
+      - run:
+          name: Install react@<< parameters.react_version >> and immutable@<< parameters.immutable_version >>
+          command: yarn add --dev react@<< parameters.react_version >> react-dom@<< parameters.react_version >> immutable@<< parameters.immutable_version >>
+      - when:
+          condition: << parameters.test_coverage >>
+          steps:
+            - run:
+                name: Run Tests for react@<< parameters.react_version >> and immutable@<< parameters.immutable_version >>
+                command: yarn test --coverage
+            - run:
+                name: Upload Test Coverage
+                command: bash <(curl -s https://codecov.io/bash)
+                when: always
+      - unless:
+          condition: << parameters.test_coverage >>
+          steps:
+            - run:
+                name: Run Tests for react@<< parameters.react_version >> and immutable@<< parameters.immutable_version >>
+                command: yarn test
 
 jobs:
   build:
@@ -23,21 +58,32 @@ jobs:
           paths:
             - ~/.caches/yarn
       - run:
-          name: Run Tests
-          command: yarn test --coverage
-      - run:
           name: Run Linting
           command: yarn lint
       - run:
           name: Build Dist Files
           command: yarn build
-      - run:
-          name: Upload Test Coverage
-          command: bash <(curl -s https://codecov.io/bash)
-          when: always
       - persist_to_workspace:
           root: ~/repo
           paths: .
+  test:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: ~/repo
+      - run_tests:
+          react_version: "^15"
+          immutable_version: "^3"
+      - run_tests:
+          react_version: "^16"
+          immutable_version: "^3"
+      - run_tests:
+          react_version: "^15"
+          immutable_version: "^4.0.0-rc.1"
+      - run_tests:
+          react_version: "^16"
+          immutable_version: "^4.0.0-rc.1"
+          test_coverage: true
   deploy:
     <<: *defaults
     steps:
@@ -51,16 +97,22 @@ jobs:
           command: npm publish
 
 workflows:
-  version: 2
-  build-deploy:
+  version: 2.1
+  build-test-deploy:
     jobs:
       - build:
           filters:
             tags:
               only: /^v.*/
-      - deploy:
+      - test:
           requires:
             - build
+          filters:
+            tags:
+              only: /^v.*/
+      - deploy:
+          requires:
+            - test
           filters:
             tags:
               only: /^v.*/
