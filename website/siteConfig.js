@@ -12,8 +12,8 @@ const siteConfig = {
         { doc: 'overview', label: 'Docs' },
         { href: "https://github.com/tophat/with-immutable-props-to-js", label: "GitHub" },
     ],
-    headerIcon: 'img/yarn.png',
-    footerIcon: 'img/yarn.png',
+    headerIcon: 'img/ml.png',
+    footerIcon: 'img/ml.png',
     favicon: 'img/favicon.png',
     colors: {
         primaryColor: '#3471c5',
@@ -35,8 +35,8 @@ const siteConfig = {
     cleanUrl: true, // No .html extensions for paths.
 
     // Open Graph and Twitter card images.
-    ogImage: 'img/yarn.png',
-    twitterImage: 'img/yarn.png',
+    ogImage: 'img/ml.png',
+    twitterImage: 'img/ml.png',
 
     // Show documentation's last contributor's name.
     enableUpdateBy: true,
