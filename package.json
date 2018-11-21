@@ -1,6 +1,6 @@
 {
   "name": "with-immutable-props-to-js",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "A higher-order component for keeping Immutable objects outside your presentational components",
   "keywords": [
     "react",
