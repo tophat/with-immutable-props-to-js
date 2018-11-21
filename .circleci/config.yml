@@ -39,6 +39,22 @@ commands:
             - run:
                 name: Run Tests for react@<< parameters.react_version >> and immutable@<< parameters.immutable_version >>
                 command: yarn test
+  prep_website_env:
+    description: "Prepapres environment with cache"
+    steps:
+      - checkout:
+          path: ~/repo
+      - restore_cache:
+          name: Restore node_modules cache
+          key: website-{{ .Branch }}-{{ checksum "yarn.lock" }}
+  save_website_cache:
+    description: "Saves environment cache"
+    steps:
+      - save_cache:
+          name: Save node_modules cache
+          key: website-{{ .Branch }}-{{ checksum "yarn.lock" }}
+          paths:
+            - node_modules/
 
 jobs:
   build:
@@ -95,6 +111,34 @@ jobs:
       - run:
           name: Publish New Package Version
           command: npm publish
+  website:
+    <<: *defaults
+    working_directory: ~/repo/website
+    steps:
+      - prep_website_env
+      - run: yarn install
+      - save_website_cache
+      - run: yarn build
+      - persist_to_workspace:
+          root: ./
+          paths:
+            - build/
+  deploy_website:
+    <<: *defaults
+    working_directory: ~/repo/website
+    steps:
+      - prep_website_env
+      - attach_workspace:
+          at: ./
+      - add_ssh_keys:
+          fingerprints:
+            - "8f:f0:a8:7a:d5:5c:e3:6f:1e:98:de:8f:0f:d2:ce:d1"
+      - run:
+          name: Setup git user and deploy website
+          command: |
+            git config --global user.email "circleci-codewatch@users.noreply.github.com"
+            git config --global user.name "CircleCI immutable-props"
+            USE_SSH=true yarn publish-gh-pages
 
 workflows:
   version: 2.1
