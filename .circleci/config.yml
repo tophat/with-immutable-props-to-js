@@ -4,9 +4,8 @@ defaults: &defaults
   working_directory: ~/repo
   docker:
     - image: circleci/node:10.13.0
-    
+
 website_docker_defaults: &website_docker_defaults
-  working_directory: ~/repo/website
   docker:
     - image: circleci/node:8.11.3
 
@@ -118,6 +117,7 @@ jobs:
           command: npm publish
   website:
     <<: *website_docker_defaults
+    working_directory: ~/repo/website
     steps:
       - prep_website_env
       - run: yarn install
@@ -129,6 +129,7 @@ jobs:
             - build/
   deploy_website:
     <<: *website_docker_defaults
+    working_directory: ~/repo/website
     steps:
       - prep_website_env
       - attach_workspace:
@@ -139,8 +140,8 @@ jobs:
       - run:
           name: Setup git user and deploy website
           command: |
-            git config --global user.email "circleci-codewatch@users.noreply.github.com"
-            git config --global user.name "CircleCI immutable-props"
+            git config --global user.email "circleci-immutable-props@users.noreply.github.com"
+            git config --global user.name "CircleCI Immutable Props"
             USE_SSH=true yarn publish-gh-pages
 
 workflows:
