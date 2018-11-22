@@ -3,8 +3,6 @@ id: api
 title: API
 ---
 
-# API
-
 ## Default Export
 
 ```
