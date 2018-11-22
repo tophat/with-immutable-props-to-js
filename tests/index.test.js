@@ -4,7 +4,7 @@ import withImmutablePropsToJS from '../src/index'
 
 import Immutable from 'immutable'
 
-describe.only('withImmutablePropsToJS', () => {
+describe('withImmutablePropsToJS', () => {
     it('converts immutable objects to plain objects', () => {
         const mockMap = { test: 'value' }
         const mockList = ['a', 'b', 'c']
