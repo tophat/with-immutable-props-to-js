@@ -3,8 +3,8 @@ const siteConfig = {
     //tagline: 'Yarn Version Manager',
     // For deploy
     cname: 'with-immutable-props-to-js.js.org',
-    url: 'https://tophat.github.io',
-    baseUrl: '/with-immutable-props-to-js/',
+    url: 'https://with-immutable-props-to-js.js.org',
+    baseUrl: '/',
     projectName: 'with-immutable-props-to-js',
     organizationName: 'tophat',
     // End deploy options
