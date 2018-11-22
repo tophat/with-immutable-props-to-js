@@ -122,6 +122,7 @@ jobs:
       - prep_website_env
       - run: yarn install
       - save_website_cache
+      - run: cat ../README.md >> ../docs/overview.md
       - run: yarn build
       - persist_to_workspace:
           root: ./
