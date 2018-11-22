@@ -1,4 +1,4 @@
-# with-immutable-props-to-js 
+# with-immutable-props-to-js
 
 <span><img align="right" src="./website/static/img/ml.png" alt="Logo"></span>
 
@@ -71,6 +71,8 @@ export default connect(mapStateToProps)(withImmutablePropsToJS(MyDumbComponent))
 You can read about the rationale for this higher-order component [here](https://tophat.github.io/with-immutable-props-to-js/docs/motivation).
 
 ## Contributors
+
+For information on how to contribute to this project, check out the [contributing guide](./CONTRIBUTING.md).
 
 Thanks goes to these wonderful people ([emoji key](https://github.com/kentcdodds/all-contributors#emoji-key)):
 
