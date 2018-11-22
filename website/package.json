@@ -1,7 +1,8 @@
 {
   "scripts": {
+    "copy-docs": "cat ../README.md >> ../docs/overview.md",
     "start": "docusaurus-start",
-    "build": "docusaurus-build",
+    "build": "yarn copy-docs && docusaurus-build",
     "publish-gh-pages": "docusaurus-publish",
     "write-translations": "docusaurus-write-translations",
     "version": "docusaurus-version",
