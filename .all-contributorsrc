@@ -57,6 +57,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "syavash",
+      "name": "Siavash Mahmoudian",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/445636?v=4",
+      "profile": "https://breezio.com",
+      "contributions": [
+        "infra"
+      ]
     }
   ]
 }

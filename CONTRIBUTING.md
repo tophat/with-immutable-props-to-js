@@ -58,3 +58,17 @@ git push --tags origin master
 
 This command pushes the commit and tag to master.
 CircleCI will automatically detect the tag and run the deploy a new version to the NPM registry.
+
+### Updating contributors
+
+When someone's PR is merged, make sure to follow up and add them to the contributors section in the README by running:
+
+```
+yarn contrib:add <github-username> <type-of-contribution>
+```
+
+For example:
+
+```
+yarn contrib:add msrose code
+```
