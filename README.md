@@ -1,4 +1,6 @@
-# with-immutable-props-to-js <span style="float: right">![Logo](./website/static/img/ml.png)</span>
+# with-immutable-props-to-js 
+
+<span><img align="right" src="./website/static/img/ml.png" alt="Logo"></span>
 
 [![npm](https://img.shields.io/npm/v/with-immutable-props-to-js.svg)](https://www.npmjs.com/package/with-immutable-props-to-js)
 [![Builds](https://img.shields.io/circleci/project/github/tophat/with-immutable-props-to-js/master.svg)](https://circleci.com/gh/tophat/with-immutable-props-to-js)
