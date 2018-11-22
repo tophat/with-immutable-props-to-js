@@ -64,7 +64,7 @@ export default connect(mapStateToProps)(withImmutablePropsToJS(MyDumbComponent))
 
 ## Motivation
 
-You can read about the rationale for this higher-order component [here](./docs/motivation.md).
+You can read about the rationale for this higher-order component [here](https://tophat.github.io/with-immutable-props-to-js/docs/motivation).
 
 ## Contributors
 
