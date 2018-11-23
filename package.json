@@ -14,7 +14,7 @@
   ],
   "repository": "git@github.com:tophat/with-immutable-props-to-js.git",
   "author": "Top Hat Monocle Corp. <opensource@tophat.com>",
-  "license": "MIT",
+  "license": "Apache-2.0",
   "scripts": {
     "test": "jest",
     "lint": "eslint . --max-warnings 0",
