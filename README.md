@@ -9,7 +9,7 @@
 [![Greenkeeper badge](https://badges.greenkeeper.io/tophat/with-immutable-props-to-js.svg)](https://greenkeeper.io/)
 
 [![All Contributors](https://img.shields.io/badge/all_contributors-7-orange.svg?style=flat)](#contributors)
-[![Slack workspace](https://slackinvite.dev.tophat.com/badge.svg)](https://opensource.tophat.com/#join-slack)
+[![Slack workspace](https://slackinvite.dev.tophat.com/badge.svg)](https://opensource.tophat.com/slack)
 [![Maturity badge - level 3](https://img.shields.io/badge/Maturity-Level%203%20--%20Stable-green.svg)](https://github.com/tophat/getting-started/blob/master/scorecard.md)
 
 A higher-order component for keeping Immutable objects outside your presentational components
