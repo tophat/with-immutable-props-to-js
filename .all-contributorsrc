@@ -82,8 +82,10 @@
       "avatar_url": "https://avatars0.githubusercontent.com/u/6589617?v=4",
       "profile": "https://github.com/danilomatamoros",
       "contributions": [
-        "code"
+        "code",
+        "doc"
       ]
     }
-  ]
+  ],
+  "contributorsPerLine": 7
 }
