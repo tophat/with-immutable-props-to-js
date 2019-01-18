@@ -101,4 +101,11 @@ describe('withImmutablePropsToJS', () => {
             `withImmutablePropsToJS(Component)`,
         )
     })
+
+    it('preserves custom static methods', () => {
+        const MyComponent = () => <div />
+        MyComponent.preload = () => {}
+        const WrappedComponent = withImmutablePropsToJS(MyComponent)
+        expect(WrappedComponent.preload).not.toBeUndefined()
+    })
 })

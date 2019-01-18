@@ -13,6 +13,7 @@
  * https://github.com/tophat/with-immutable-props-to-js/blob/master/LICENSE
  */
 
+import hoistNonReactStatics from 'hoist-non-react-statics'
 import React from 'react'
 import { Iterable } from 'immutable'
 
@@ -41,7 +42,7 @@ const withImmutablePropsToJS = WrappedComponent => {
         WrappedComponent,
     )})`
 
-    return Wrapper
+    return hoistNonReactStatics(Wrapper, WrappedComponent)
 }
 
 export default withImmutablePropsToJS
