@@ -26,7 +26,7 @@ or
 npm install with-immutable-props-to-js
 ```
 
-This library also lists `react`, `react-dom`, and `immutable` as peer dependencies, so make sure they are installed in your project as well.
+This library also lists `react`, `react-dom`, `hoist-non-react-statics` and `immutable` as peer dependencies, so make sure they are installed in your project as well.
 
 ## Usage
 
