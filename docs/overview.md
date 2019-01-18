@@ -24,7 +24,7 @@ or
 npm install with-immutable-props-to-js
 ```
 
-Make sure to install the following peer dependencies as well: `react`, `react-dom`, `immutable` and `hoist-non-react-statics`
+Make sure to install the following peer dependencies as well: `react`, `react-dom`, `immutable`
 
 ## Links
 
