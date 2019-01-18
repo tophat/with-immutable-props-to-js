@@ -60,5 +60,8 @@
     "collectCoverageFrom": [
       "src/**/*.js"
     ]
+  },
+  "dependencies": {
+    "hoist-non-react-statics": "^3.2.1"
   }
 }
