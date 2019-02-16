@@ -8,7 +8,11 @@
  * sell copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
  *
- * Modified work Copyright 2018 Top Hat Monocle Corp.
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ *
+ * Modified work Copyright 2018-present Top Hat Monocle Corp.
  *
  * https://github.com/tophat/with-immutable-props-to-js/blob/master/LICENSE
  */
