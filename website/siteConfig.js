@@ -10,7 +10,10 @@ const siteConfig = {
     // End deploy options
     headerLinks: [
         { doc: 'overview', label: 'Docs' },
-        { href: "https://github.com/tophat/with-immutable-props-to-js", label: "GitHub" },
+        {
+            href: 'https://github.com/tophat/with-immutable-props-to-js',
+            label: 'GitHub',
+        },
     ],
     headerIcon: 'img/ml.png',
     footerIcon: 'img/ml.png',

@@ -5,6 +5,8 @@
  * LICENSE file in the root directory of this source tree.
  */
 
+/* eslint-disable react/prop-types */
+
 const React = require('react')
 
 class Footer extends React.Component {
@@ -13,7 +15,10 @@ class Footer extends React.Component {
             <footer className="nav-footer" id="footer">
                 <section className="footer">
                     <div className="footer-icon">
-                        <a href={this.props.config.baseUrl} className="nav-home">
+                        <a
+                            href={this.props.config.baseUrl}
+                            className="nav-home"
+                        >
                             {this.props.config.footerIcon && (
                                 <img
                                     src={
@@ -28,7 +33,9 @@ class Footer extends React.Component {
                         </a>
                     </div>
                     <div className="footer-github">
-                        <a href="https://github.com/tophat/with-immutable-props-to-js">GitHub</a>
+                        <a href="https://github.com/tophat/with-immutable-props-to-js">
+                            GitHub
+                        </a>
                         <a
                             className="github-button"
                             href="https://github.com/tophat/with-immutable-props-to-js"
