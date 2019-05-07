@@ -9,6 +9,7 @@
     "selectors"
   ],
   "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "files": [
     "lib"
   ],
@@ -19,7 +20,7 @@
     "test": "jest",
     "lint": "eslint . --max-warnings 0",
     "fix": "eslint --fix .",
-    "build": "babel src -d lib",
+    "build": "babel src -d lib --copy-files",
     "contrib:add": "all-contributors add",
     "contrib:generate": "all-contributors generate",
     "contrib:check": "all-contributors check",
