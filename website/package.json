@@ -9,7 +9,7 @@
     "rename-version": "docusaurus-rename-version"
   },
   "devDependencies": {
-    "docusaurus": "^1.7.1"
+    "docusaurus": "^1.11.1"
   },
   "dependencies": {
     "react": "^16.6.3"
