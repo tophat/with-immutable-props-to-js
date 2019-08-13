@@ -17,7 +17,11 @@ describe('withImmutablePropsToJS', () => {
         const MyComponent = () => <div />
         const WrappedComponent = withImmutablePropsToJS(MyComponent)
         const wrapper = mount(<WrappedComponent {...mockProps} />)
-        expect(wrapper.find(MyComponent).props()).toEqual({ mockMap, mockList })
+        expect(wrapper.find(MyComponent).props()).toEqual({
+            mockMap,
+            forwardedRef: null,
+            mockList,
+        })
     })
 
     it('leaves non-immutable object props alone', () => {
@@ -29,7 +33,11 @@ describe('withImmutablePropsToJS', () => {
         const WrappedComponent = withImmutablePropsToJS(MyComponent)
         const wrapper = mount(<WrappedComponent {...mockProps} />)
         const myComponent = wrapper.find(MyComponent)
-        expect(myComponent.props()).toEqual(mockProps)
+        expect(myComponent.props()).toEqual({
+            arr: [1, 2, 3],
+            forwardedRef: null,
+            obj: { deep: 'prop' },
+        })
         expect(myComponent.prop('arr')).toBe(mockProps.arr)
         expect(myComponent.prop('obj')).toBe(mockProps.obj)
     })
