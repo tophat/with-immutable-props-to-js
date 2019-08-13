@@ -108,4 +108,16 @@ describe('withImmutablePropsToJS', () => {
         const WrappedComponent = withImmutablePropsToJS(MyComponent)
         expect(WrappedComponent.preload).not.toBeUndefined()
     })
+
+    it('forwards ref', () => {
+        const myRef = React.createRef()
+        const MyComponent = React.forwardRef((props, ref) => <div ref={ref} />)
+        const WithImmutable = withImmutablePropsToJS(MyComponent)
+        mount(
+            <div>
+                <WithImmutable ref={myRef} />
+            </div>,
+        )
+        expect(myRef.current).toBeTruthy()
+    })
 })

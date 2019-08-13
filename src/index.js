@@ -39,14 +39,21 @@ const withImmutablePropsToJS = WrappedComponent => {
             },
             {},
         )
-        return <WrappedComponent {...propsJS} />
+        const { forwardedRef } = props
+        return <WrappedComponent {...propsJS} ref={forwardedRef} />
     }
 
-    Wrapper.displayName = `withImmutablePropsToJS(${getDisplayName(
+    const ForwardedComponent = React.forwardRef((props, ref) => (
+        <Wrapper {...props} forwardedRef={ref} />
+    ))
+
+    ForwardedComponent.displayName = `withImmutablePropsToJS(${getDisplayName(
         WrappedComponent,
     )})`
 
-    return hoistNonReactStatics(Wrapper, WrappedComponent)
+    hoistNonReactStatics(ForwardedComponent, WrappedComponent)
+
+    return ForwardedComponent
 }
 
 export default withImmutablePropsToJS
