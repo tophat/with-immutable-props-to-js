@@ -37,7 +37,6 @@
     "babel-core": "^7.0.0-bridge.0",
     "babel-jest": "^24.1.0",
     "enzyme": "^3.7.0",
-    "enzyme-adapter-react-15": "^1.2.0",
     "enzyme-adapter-react-16": "^1.7.0",
     "eslint": "^6.0.0",
     "eslint-config-prettier": "^6.0.0",
@@ -53,11 +52,11 @@
   },
   "peerDependencies": {
     "immutable": ">=3.0.0",
-    "react": ">=15.0.0",
-    "react-dom": ">=15.0.0"
+    "react": ">=16.3.0",
+    "react-dom": ">=16.3.0"
   },
   "jest": {
-    "setupTestFrameworkScriptFile": "<rootDir>/tests/setupTestFramework.js",
+    "setupFilesAfterEnv": ["<rootDir>/tests/setupTestFramework.js"],
     "collectCoverageFrom": [
       "src/**/*.js"
     ]
