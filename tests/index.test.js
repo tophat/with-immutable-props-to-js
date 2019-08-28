@@ -119,13 +119,15 @@ describe('withImmutablePropsToJS', () => {
 
     it('forwards ref', () => {
         const myRef = React.createRef()
-        const MyComponent = React.forwardRef((props, ref) => <div ref={ref} />)
+        const MyComponent = React.forwardRef((props, ref) => (
+            <div ref={ref}>some content</div>
+        ))
         const WithImmutable = withImmutablePropsToJS(MyComponent)
         mount(
             <div>
                 <WithImmutable ref={myRef} />
             </div>,
         )
-        expect(myRef.current).toBeTruthy()
+        expect(myRef.current.innerHTML).toBe('some content')
     })
 })
