@@ -1051,9 +1051,9 @@
     "@types/yargs" "^13.0.0"
 
 "@tophat/eslint-config@^0.1.2":
-  version "0.1.2"
-  resolved "https://registry.yarnpkg.com/@tophat/eslint-config/-/eslint-config-0.1.2.tgz#b43a459abde601f5db370920e57db098abe12518"
-  integrity sha512-VUZPDpgcklTrjEY7NdD4dsaQKHw+MEY5fNq0fJ/WDnm7PXWuqMzKt4YjPeZ0XzOQPas6uNYwUaH1Btg64STT7Q==
+  version "0.1.4"
+  resolved "https://registry.yarnpkg.com/@tophat/eslint-config/-/eslint-config-0.1.4.tgz#10a22f1dfbec1bec30da250c1c89efde159d121a"
+  integrity sha512-8AMc+7zz5XsWBXMQlYm4bgpmrlaxV39Xv5YgW1fYVAoF0dfXkoGneP3xcBDnnCwcYPUxiFMqNKCQmQ74b7EAiw==
 
 "@types/babel__core@^7.1.0":
   version "7.1.2"
