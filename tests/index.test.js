@@ -19,7 +19,6 @@ describe('withImmutablePropsToJS', () => {
         const wrapper = mount(<WrappedComponent {...mockProps} />)
         expect(wrapper.find(MyComponent).props()).toEqual({
             mockMap,
-            forwardedRef: null,
             mockList,
         })
     })
@@ -35,7 +34,6 @@ describe('withImmutablePropsToJS', () => {
         const myComponent = wrapper.find(MyComponent)
         expect(myComponent.props()).toEqual({
             arr: [1, 2, 3],
-            forwardedRef: null,
             obj: { deep: 'prop' },
         })
         expect(myComponent.prop('arr')).toBe(mockProps.arr)

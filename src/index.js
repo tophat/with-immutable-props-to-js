@@ -27,7 +27,9 @@ const getDisplayName = Component => {
 
 const withImmutablePropsToJS = WrappedComponent => {
     const Wrapper = props => {
-        const propsJS = Object.entries(props).reduce(
+        const { forwardedRef, ...rest } = props
+
+        const propsJS = Object.entries(rest).reduce(
             (newProps, [propKey, propValue]) => {
                 const canConvertToJS =
                     Iterable.isIterable(propValue) &&
@@ -39,7 +41,6 @@ const withImmutablePropsToJS = WrappedComponent => {
             },
             {},
         )
-        const { forwardedRef } = props
         return <WrappedComponent {...propsJS} ref={forwardedRef} />
     }
 
