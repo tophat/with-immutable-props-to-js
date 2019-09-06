@@ -8,7 +8,7 @@
 [![codecov](https://codecov.io/gh/tophat/with-immutable-props-to-js/branch/master/graph/badge.svg)](https://codecov.io/gh/tophat/with-immutable-props-to-js)
 [![Dependabot Status](https://api.dependabot.com/badges/status?host=github&repo=tophat/with-immutable-props-to-js)](https://dependabot.com)
 
-[![All Contributors](https://img.shields.io/badge/all_contributors-10-orange.svg?style=flat)](#contributors)
+[![All Contributors](https://img.shields.io/badge/all_contributors-11-orange.svg?style=flat)](#contributors)
 [![Slack workspace](https://slackinvite.dev.tophat.com/badge.svg)](https://opensource.tophat.com/slack)
 [![Maturity badge - level 3](https://img.shields.io/badge/Maturity-Level%203%20--%20Stable-green.svg)](https://github.com/tophat/getting-started/blob/master/scorecard.md)
 
@@ -92,6 +92,7 @@ Thanks goes to these wonderful people ([emoji key](https://github.com/kentcdodds
     <td align="center"><a href="https://github.com/danilomatamoros"><img src="https://avatars0.githubusercontent.com/u/6589617?v=4" width="100px;" alt="Danilo Matamoros"/><br /><sub><b>Danilo Matamoros</b></sub></a><br /><a href="https://github.com/tophat/with-immutable-props-to-js/commits?author=danilomatamoros" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/enheit"><img src="https://avatars1.githubusercontent.com/u/8645216?v=4" width="100px;" alt="Roman Mahotskyi"/><br /><sub><b>Roman Mahotskyi</b></sub></a><br /><a href="#infra-enheit" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a></td>
     <td align="center"><a href="http://twitter.com/pfmmfp"><img src="https://avatars3.githubusercontent.com/u/2229060?v=4" width="100px;" alt="Pablo Morra"/><br /><sub><b>Pablo Morra</b></sub></a><br /><a href="https://github.com/tophat/with-immutable-props-to-js/commits?author=pfmmfp" title="Code">💻</a> <a href="https://github.com/tophat/with-immutable-props-to-js/commits?author=pfmmfp" title="Tests">⚠️</a></td>
+    <td align="center"><a href="https://github.com/apps/dependabot"><img src="https://avatars0.githubusercontent.com/in/29110?v=4" width="100px;" alt="dependabot[bot]"/><br /><sub><b>dependabot[bot]</b></sub></a><br /><a href="#infra-dependabot[bot]" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a></td>
   </tr>
 </table>
 
