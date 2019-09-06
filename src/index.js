@@ -20,6 +20,7 @@
 import hoistNonReactStatics from 'hoist-non-react-statics'
 import React from 'react'
 import { Iterable } from 'immutable'
+import PropTypes from 'prop-types'
 
 const getDisplayName = Component => {
     return Component.displayName || Component.name || 'Component'
@@ -27,7 +28,9 @@ const getDisplayName = Component => {
 
 const withImmutablePropsToJS = WrappedComponent => {
     const Wrapper = props => {
-        const propsJS = Object.entries(props).reduce(
+        const { forwardedRef, ...rest } = props
+
+        const propsJS = Object.entries(rest).reduce(
             (newProps, [propKey, propValue]) => {
                 const canConvertToJS =
                     Iterable.isIterable(propValue) &&
@@ -39,14 +42,27 @@ const withImmutablePropsToJS = WrappedComponent => {
             },
             {},
         )
-        return <WrappedComponent {...propsJS} />
+        return <WrappedComponent {...propsJS} ref={forwardedRef} />
     }
 
-    Wrapper.displayName = `withImmutablePropsToJS(${getDisplayName(
+    Wrapper.propTypes = {
+        forwardedRef: PropTypes.oneOfType([
+            PropTypes.func,
+            PropTypes.shape({ current: PropTypes.instanceOf(Element) }),
+        ]).isRequired,
+    }
+
+    const WrapperWithForwardedRef = React.forwardRef((props, ref) => (
+        <Wrapper {...props} forwardedRef={ref} />
+    ))
+
+    WrapperWithForwardedRef.displayName = `withImmutablePropsToJS(${getDisplayName(
         WrappedComponent,
     )})`
 
-    return hoistNonReactStatics(Wrapper, WrappedComponent)
+    hoistNonReactStatics(WrapperWithForwardedRef, WrappedComponent)
+
+    return WrapperWithForwardedRef
 }
 
 export default withImmutablePropsToJS
