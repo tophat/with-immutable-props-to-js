@@ -48,8 +48,12 @@ const withImmutablePropsToJS = WrappedComponent => {
     Wrapper.propTypes = {
         forwardedRef: PropTypes.oneOfType([
             PropTypes.func,
-            PropTypes.shape({ current: PropTypes.instanceOf(Element) }),
-        ]).isRequired,
+            PropTypes.shape({ current: PropTypes.node }),
+        ]),
+    }
+
+    Wrapper.defaultProps = {
+        forwardedRef: null,
     }
 
     const WrapperWithForwardedRef = React.forwardRef((props, ref) => (
