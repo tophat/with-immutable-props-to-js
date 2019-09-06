@@ -93,6 +93,16 @@
       "contributions": [
         "infra"
       ]
+    },
+    {
+      "login": "pfmmfp",
+      "name": "Pablo Morra",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/2229060?v=4",
+      "profile": "http://twitter.com/pfmmfp",
+      "contributions": [
+        "code",
+        "test"
+      ]
     }
   ],
   "contributorsPerLine": 7
