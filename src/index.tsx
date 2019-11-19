@@ -16,39 +16,40 @@
  *
  * https://github.com/tophat/with-immutable-props-to-js/blob/master/LICENSE
  */
-
 import hoistNonReactStatics from 'hoist-non-react-statics'
-import React from 'react'
-import { Iterable } from 'immutable'
+import * as React from 'react'
+import * as Immutable from 'immutable'
+import './declarations'
 
-const getDisplayName = Component => {
+const getDisplayName = (Component: React.ComponentType): string => {
     return Component.displayName || Component.name || 'Component'
 }
 
-const withImmutablePropsToJS = WrappedComponent => {
-    const Wrapper = props => {
-        const { forwardedRef, ...rest } = props
+const isImmutable = Immutable.isImmutable || Immutable.Iterable.isIterable
 
+function withImmutablePropsToJS<P>(
+    WrappedComponent: React.ComponentType<P>,
+): React.ComponentType<P> {
+    type WrapperProps = P & {
+        forwardedRef?: React.Ref<React.ElementType>
+    }
+    const Wrapper = ({ forwardedRef, ...rest }: WrapperProps) => {
         const propsJS = Object.entries(rest).reduce(
-            (newProps, [propKey, propValue]) => {
+            (newProps, [propKey, propValue]: [string, any]) => {
                 const canConvertToJS =
-                    Iterable.isIterable(propValue) &&
+                    isImmutable(propValue) &&
                     typeof propValue.toJS === 'function'
                 newProps[propKey] = canConvertToJS
                     ? propValue.toJS()
                     : propValue
                 return newProps
             },
-            {},
+            {} as { [index: string]: any },
         )
-        return <WrappedComponent {...propsJS} ref={forwardedRef} />
+        return <WrappedComponent {...(propsJS as P)} ref={forwardedRef} />
     }
 
-    Wrapper.defaultProps = {
-        forwardedRef: null,
-    }
-
-    const WrapperWithForwardedRef = React.forwardRef((props, ref) => (
+    const WrapperWithForwardedRef = React.forwardRef((props: P, ref) => (
         <Wrapper {...props} forwardedRef={ref} />
     ))
 
@@ -58,7 +59,7 @@ const withImmutablePropsToJS = WrappedComponent => {
 
     hoistNonReactStatics(WrapperWithForwardedRef, WrappedComponent)
 
-    return WrapperWithForwardedRef
+    return WrapperWithForwardedRef as React.ComponentType<P>
 }
 
 export default withImmutablePropsToJS

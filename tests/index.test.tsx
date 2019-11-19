@@ -1,6 +1,6 @@
-import React from 'react'
+import * as React from 'react'
 import { mount } from 'enzyme'
-import Immutable from 'immutable'
+import * as Immutable from 'immutable'
 
 import withImmutablePropsToJS from '../src/index'
 
@@ -8,13 +8,18 @@ describe('withImmutablePropsToJS', () => {
     it('converts immutable objects to plain objects', () => {
         const mockMap = { test: 'value' }
         const mockList = ['a', 'b', 'c']
-        const immutableMap = new Immutable.Map(mockMap)
-        const immutableList = new Immutable.List(mockList)
+        const immutableMap = Immutable.Map(mockMap)
+        const immutableList = Immutable.List(mockList)
         const mockProps = {
             mockMap: immutableMap,
             mockList: immutableList,
         }
-        const MyComponent = () => <div />
+        const MyComponent: React.FunctionComponent<{
+            mockMap: Immutable.Map<any, any>
+            mockList: Immutable.List<any>
+        }> = () => {
+            return <div />
+        }
         const WrappedComponent = withImmutablePropsToJS(MyComponent)
         const wrapper = mount(<WrappedComponent {...mockProps} />)
         expect(wrapper.find(MyComponent).props()).toEqual({
@@ -28,7 +33,12 @@ describe('withImmutablePropsToJS', () => {
             arr: [1, 2, 3],
             obj: { deep: 'prop' },
         }
-        const MyComponent = () => <div />
+        const MyComponent: React.FunctionComponent<{
+            obj: object
+            arr: any[]
+        }> = () => {
+            return <div />
+        }
         const WrappedComponent = withImmutablePropsToJS(MyComponent)
         const wrapper = mount(<WrappedComponent {...mockProps} />)
         const myComponent = wrapper.find(MyComponent)
@@ -40,11 +50,13 @@ describe('withImmutablePropsToJS', () => {
         expect(myComponent.prop('obj')).toBe(mockProps.obj)
     })
 
-    const expectPropToBeLeftAlone = propValue => {
+    function expectPropToBeLeftAlone<T>(propValue: T) {
         const mockProps = {
             mockProp: propValue,
         }
-        const MyComponent = () => <div />
+        const MyComponent: React.FunctionComponent<{ mockProp: T }> = () => (
+            <div />
+        )
         const WrappedComponent = withImmutablePropsToJS(MyComponent)
         const wrapper = mount(<WrappedComponent {...mockProps} />)
         expect(wrapper.find(MyComponent).prop('mockProp')).toBe(propValue)
@@ -84,7 +96,9 @@ describe('withImmutablePropsToJS', () => {
     })
 
     it('sets the display name of the wrapper component', () => {
-        const MyComponent = () => <div />
+        const MyComponent = () => {
+            return <div />
+        }
         const mockDisplayName = 'MyComponentDisplayName'
         MyComponent.displayName = mockDisplayName
         const WrappedComponent = withImmutablePropsToJS(MyComponent)
@@ -94,7 +108,9 @@ describe('withImmutablePropsToJS', () => {
     })
 
     it('sets the display name using the constructor name if the displayName is not set', () => {
-        const MyComponent = () => <div />
+        const MyComponent = () => {
+            return <div />
+        }
         const WrappedComponent = withImmutablePropsToJS(MyComponent)
         expect(WrappedComponent.displayName).toBe(
             `withImmutablePropsToJS(MyComponent)`,
