@@ -112,6 +112,15 @@
       "contributions": [
         "infra"
       ]
+    },
+    {
+      "login": "maarteti",
+      "name": "jinwoo choi",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/1140243?v=4",
+      "profile": "https://github.com/maarteti",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7
