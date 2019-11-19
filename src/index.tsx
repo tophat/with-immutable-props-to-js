@@ -19,7 +19,6 @@
 import hoistNonReactStatics from 'hoist-non-react-statics'
 import * as React from 'react'
 import * as Immutable from 'immutable'
-import './declarations'
 
 const getDisplayName = (Component: React.ComponentType): string => {
     return Component.displayName || Component.name || 'Component'
