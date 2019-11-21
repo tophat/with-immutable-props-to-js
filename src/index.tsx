@@ -24,7 +24,15 @@ const getDisplayName = (Component: React.ComponentType): string => {
     return Component.displayName || Component.name || 'Component'
 }
 
-const isImmutable = Immutable.isImmutable || Immutable.Iterable.isIterable
+/*
+ * isIterable relies on `Immutable.Iterable`, which just relies on the built-in Iterable interface.
+ * Because of this, Immutable.Iterable is not part of the Immutable typing.
+ * The role can be filled in by a typeguard that relied on the built-in Iterable.
+ */
+const isIterable = (argument: any): argument is Iterable<any> =>
+    Symbol.iterator in argument
+
+const isImmutable = Immutable.isImmutable || isIterable
 
 function withImmutablePropsToJS<P>(
     WrappedComponent: React.ComponentType<P>,
