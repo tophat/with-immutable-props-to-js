@@ -30,7 +30,7 @@ const getDisplayName = (Component: React.ComponentType): string => {
  * The role can be filled in by a typeguard that relied on the built-in Iterable.
  */
 const isIterable = (argument: any): argument is Iterable<any> =>
-    Symbol.iterator in argument
+    argument instanceof Object && Symbol.iterator in argument
 
 const isImmutable = Immutable.isImmutable || isIterable
 
