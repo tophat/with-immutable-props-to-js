@@ -1,8 +1,8 @@
 import React from 'react'
 import { mount } from 'enzyme'
-import withImmutablePropsToJS from '../src/index'
-
 import Immutable from 'immutable'
+
+import withImmutablePropsToJS from '../src/index'
 
 describe('withImmutablePropsToJS', () => {
     it('converts immutable objects to plain objects', () => {
