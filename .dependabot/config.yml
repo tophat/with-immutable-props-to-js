@@ -8,8 +8,8 @@ update_configs:
       prefix: "chore"
     automerged_updates:
       - match:
-        dependency_type: "development"
-        update_type: "in_range"
+          dependency_type: "development"
+          update_type: "in_range"
   - package_manager: "javascript"
     directory: "/website"
     update_schedule: "weekly"
@@ -18,5 +18,5 @@ update_configs:
       prefix: "chore"
     automerged_updates:
       - match:
-        dependency_type: "all"
-        update_type: "in_range"
+          dependency_type: "all"
+          update_type: "in_range"
