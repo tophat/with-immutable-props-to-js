@@ -990,10 +990,10 @@
     "@types/istanbul-reports" "^1.1.1"
     "@types/yargs" "^13.0.0"
 
-"@tophat/eslint-config@^0.3.1":
-  version "0.3.1"
-  resolved "https://registry.yarnpkg.com/@tophat/eslint-config/-/eslint-config-0.3.1.tgz#900da880a6c009f0f55dc5aa754b7aab3819fbdb"
-  integrity sha512-uYlXbI1EUl3ErMCE1DElwd34aHiIHrzaM7XdTQ4EIjvfZUvgTtMtRZ1VqMv/izs7A0NH/92qp4KGgDQJAatbTw==
+"@tophat/eslint-config@^0.4.0":
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/@tophat/eslint-config/-/eslint-config-0.4.0.tgz#eca7e04fcea11fc66eff988d0ab301d4b4c08a2f"
+  integrity sha512-xEedBuMbB1E3sY/BFby39S/JfcFjW2Ho3ujz13197Mi+AlnEiiL4DobgcoTz4jPN4wcKFyymrm7xFICpzkIb0Q==
 
 "@types/babel__core@^7.1.0":
   version "7.1.2"
