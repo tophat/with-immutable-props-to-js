@@ -40,47 +40,47 @@ describe('withImmutablePropsToJS', () => {
         expect(myComponent.prop('obj')).toBe(mockProps.obj)
     })
 
-    const expectPropToBeLeftAlone = propValue => {
+    const isPropLeftAlone = propValue => {
         const mockProps = {
             mockProp: propValue,
         }
         const MyComponent = () => <div />
         const WrappedComponent = withImmutablePropsToJS(MyComponent)
         const wrapper = mount(<WrappedComponent {...mockProps} />)
-        expect(wrapper.find(MyComponent).prop('mockProp')).toBe(propValue)
+        return wrapper.find(MyComponent).prop('mockProp') === propValue
     }
 
     it('leaves function props alone', () => {
-        expectPropToBeLeftAlone(function() {})
-        expectPropToBeLeftAlone(() => {})
+        expect(isPropLeftAlone(function() {})).toBe(true)
+        expect(isPropLeftAlone(() => {})).toBe(true)
     })
 
     it('leaves string props alone', () => {
-        expectPropToBeLeftAlone('my great string')
-        expectPropToBeLeftAlone('')
-        expectPropToBeLeftAlone('*'.repeat(1000))
+        expect(isPropLeftAlone('my great string')).toBe(true)
+        expect(isPropLeftAlone('')).toBe(true)
+        expect(isPropLeftAlone('*'.repeat(1000))).toBe(true)
     })
 
     it('leaves number props alone', () => {
-        expectPropToBeLeftAlone(1337)
-        expectPropToBeLeftAlone(0)
-        expectPropToBeLeftAlone(1e12)
-        expectPropToBeLeftAlone(1.25)
-        expectPropToBeLeftAlone(-0)
-        expectPropToBeLeftAlone(-5.222)
+        expect(isPropLeftAlone(1337)).toBe(true)
+        expect(isPropLeftAlone(0)).toBe(true)
+        expect(isPropLeftAlone(1e12)).toBe(true)
+        expect(isPropLeftAlone(1.25)).toBe(true)
+        expect(isPropLeftAlone(-0)).toBe(true)
+        expect(isPropLeftAlone(-5.222)).toBe(true)
     })
 
     it('leaves null props alone', () => {
-        expectPropToBeLeftAlone(null)
+        expect(isPropLeftAlone(null)).toBe(true)
     })
 
     it('leaves undefined props alone', () => {
-        expectPropToBeLeftAlone(undefined)
+        expect(isPropLeftAlone(undefined)).toBe(true)
     })
 
     it('leaves boolean props alone', () => {
-        expectPropToBeLeftAlone(true)
-        expectPropToBeLeftAlone(false)
+        expect(isPropLeftAlone(true)).toBe(true)
+        expect(isPropLeftAlone(false)).toBe(true)
     })
 
     it('sets the display name of the wrapper component', () => {
