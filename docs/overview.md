@@ -33,7 +33,7 @@ You can view the [README on GitHub](http://github.com/tophat/with-immutable-prop
 This higher-order component is meant to be used with several other libraries:
 
 - You can learn more about React on [the React website](https://reactjs.org/)
-- You can learn more about Immutable on [the Immutable website](https://facebook.github.io/immutable-js/)
+- You can learn more about Immutable on [the Immutable website](https://immutable-js.github.io/immutable-js/)
 - You can learn more about Redux on [the Redux website](https://redux.js.org/)
-    - You can learn more about Redux selectors on [the Redux learning resources page](https://redux.js.org/introduction/learningresources#selectors)
-    - You can learn more about using Immutable with Redux on [the Redux docs page for Immutable](https://redux.js.org/recipes/usingimmutablejs)
+    - You can learn more about Redux selectors on [the Redux learning resources page](https://redux.js.org/introduction/learning-resources#selectors)
+    - You can learn more about using Immutable with Redux on [the Redux docs page for Immutable](https://redux.js.org/recipes/using-immutablejs-with-redux#using-immutablejs-with-redux)
