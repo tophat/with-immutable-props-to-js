@@ -97,14 +97,14 @@ describe('withImmutablePropsToJS', () => {
         const MyComponent = () => <div />
         const WrappedComponent = withImmutablePropsToJS(MyComponent)
         expect(WrappedComponent.displayName).toBe(
-            `withImmutablePropsToJS(MyComponent)`,
+            'withImmutablePropsToJS(MyComponent)',
         )
     })
 
     it('sets a default display name if none is set', () => {
         const WrappedComponent = withImmutablePropsToJS(() => <div />)
         expect(WrappedComponent.displayName).toBe(
-            `withImmutablePropsToJS(Component)`,
+            'withImmutablePropsToJS(Component)',
         )
     })
 

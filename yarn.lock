@@ -1102,10 +1102,10 @@
   dependencies:
     type-detect "4.0.8"
 
-"@tophat/eslint-config@^0.5.0":
-  version "0.5.0"
-  resolved "https://registry.yarnpkg.com/@tophat/eslint-config/-/eslint-config-0.5.0.tgz#86a0b299dd1543d1f4354685b5a73ba8530b9669"
-  integrity sha512-0MsU1j9STO4fIDx9/Io5nFfwjwwHfxy208kJB3ZYIjP63Ab4v2E56gDxvkIJFZWK2fm1CYMI32qnEWS3CfCMYg==
+"@tophat/eslint-config@^0.6.0":
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/@tophat/eslint-config/-/eslint-config-0.6.0.tgz#686979efb71df617c43bf359f1e9bffd81ea5e37"
+  integrity sha512-rutevCgwauwToeD9fzoxbFTlf5aq7hYviO0XBSJjNv38lppaWAQzM6y3FjWRa5CZHvbvaPeyJn/wcCHVb/UrhQ==
 
 "@types/babel__core@^7.1.0":
   version "7.1.2"
@@ -2500,6 +2500,11 @@ eslint-plugin-prettier@^3.1.2:
   integrity sha512-GlolCC9y3XZfv3RQfwGew7NnuFDKsfI4lbvRK+PIIo23SFH+LemGs4cKwzAaRa+Mdb+lQO/STaIayno8T5sJJA==
   dependencies:
     prettier-linter-helpers "^1.0.0"
+
+eslint-plugin-react-hooks@^2.5.0:
+  version "2.5.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-react-hooks/-/eslint-plugin-react-hooks-2.5.0.tgz#c50ab7ca5945ce6d1cf8248d9e185c80b54171b6"
+  integrity sha512-bzvdX47Jx847bgAYf0FPX3u1oxU+mKU8tqrpj4UX9A96SbAmj/HVEefEy6rJUog5u8QIlOPTKZcBpGn5kkKfAQ==
 
 eslint-plugin-react@^7.18.3:
   version "7.18.3"
