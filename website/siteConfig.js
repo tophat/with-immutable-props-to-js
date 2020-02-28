@@ -25,7 +25,7 @@ const siteConfig = {
     customDocsPath: 'docs',
     gaTrackingId: 'UA-129741728-1',
 
-    copyright: `Top Hat Open Source`,
+    copyright: 'Top Hat Open Source',
 
     highlight: {
         // Highlight.js theme to use for syntax highlighting in code blocks.
