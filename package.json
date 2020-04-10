@@ -49,7 +49,7 @@
     "eslint-plugin-react-hooks": "^2.5.0",
     "immutable": "^4.0.0-rc.12",
     "jest": "^25.1.0",
-    "prettier": "^1.19.1",
+    "prettier": "^2.0.4",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1"
