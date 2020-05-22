@@ -51,7 +51,7 @@ describe('withImmutablePropsToJS', () => {
     }
 
     it('leaves function props alone', () => {
-        expect(isPropLeftAlone(function() {})).toBe(true)
+        expect(isPropLeftAlone(function () {})).toBe(true)
         expect(isPropLeftAlone(() => {})).toBe(true)
     })
 
