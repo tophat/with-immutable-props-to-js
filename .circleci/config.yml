@@ -3,7 +3,7 @@ version: 2.1
 defaults: &defaults
   working_directory: ~/repo
   docker:
-    - image: circleci/node:10.13.0
+    - image: circleci/node:10.21.0
 
 website_docker_defaults: &website_docker_defaults
   docker:
