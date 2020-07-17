@@ -35,7 +35,7 @@
     "@tophat/eslint-config": "^0.7.0",
     "all-contributors-cli": "^6.16.1",
     "babel-core": "^7.0.0-bridge.0",
-    "babel-jest": "^26.0.1",
+    "babel-jest": "^26.1.0",
     "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.2",
