@@ -33,7 +33,7 @@
     "@babel/preset-env": "^7.11.0",
     "@babel/preset-react": "^7.9.4",
     "@tophat/eslint-config": "^0.7.0",
-    "all-contributors-cli": "^6.16.1",
+    "all-contributors-cli": "^6.17.0",
     "babel-core": "^7.0.0-bridge.0",
     "babel-jest": "^26.1.0",
     "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
