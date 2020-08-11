@@ -143,4 +143,10 @@ describe('withImmutablePropsToJS', () => {
         )
         expect(element.innerHTML).toBe('some content')
     })
+
+    it('exposes the wrapped component', () => {
+        const MyComponent = () => <div />
+        const WithImmutable = withImmutablePropsToJS(MyComponent)
+        expect(WithImmutable.WrappedComponent).toBe(MyComponent)
+    })
 })
