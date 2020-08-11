@@ -96,6 +96,7 @@ Thanks goes to these wonderful people ([emoji key](https://github.com/kentcdodds
     <td align="center"><a href="https://github.com/apps/dependabot"><img src="https://avatars0.githubusercontent.com/in/29110?v=4" width="100px;" alt=""/><br /><sub><b>dependabot[bot]</b></sub></a><br /><a href="#infra-dependabot[bot]" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a></td>
     <td align="center"><a href="https://github.com/maarteti"><img src="https://avatars2.githubusercontent.com/u/1140243?v=4" width="100px;" alt=""/><br /><sub><b>jinwoo choi</b></sub></a><br /><a href="https://github.com/tophat/with-immutable-props-to-js/commits?author=maarteti" title="Code">💻</a></td>
     <td align="center"><a href="https://mcataford.github.io"><img src="https://avatars2.githubusercontent.com/u/6210361?v=4" width="100px;" alt=""/><br /><sub><b>Marc Cataford</b></sub></a><br /><a href="https://github.com/tophat/with-immutable-props-to-js/commits?author=mcataford" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://github.com/mh91chentophat"><img src="https://avatars3.githubusercontent.com/u/22596458?v=4" width="100px;" alt=""/><br /><sub><b>Michael Chen</b></sub></a><br /><a href="https://github.com/tophat/with-immutable-props-to-js/commits?author=mh91chentophat" title="Code">💻</a></td>
   </tr>
 </table>
 
