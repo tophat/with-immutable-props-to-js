@@ -63,6 +63,7 @@ const withImmutablePropsToJS = WrappedComponent => {
     WrapperWithForwardedRef.displayName = `withImmutablePropsToJS(${getDisplayName(
         WrappedComponent,
     )})`
+    WrapperWithForwardedRef.WrappedComponent = WrappedComponent
 
     hoistNonReactStatics(WrapperWithForwardedRef, WrappedComponent)
 
