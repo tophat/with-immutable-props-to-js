@@ -130,6 +130,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "mh91chentophat",
+      "name": "Michael Chen",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/22596458?v=4",
+      "profile": "https://github.com/mh91chentophat",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
