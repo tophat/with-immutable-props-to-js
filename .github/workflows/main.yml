@@ -4,6 +4,22 @@ on:
     branches: master
 
 jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install dependencies
+        run: yarn --frozen-lockfile
+      - name: Build
+        run: yarn build
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install dependencies
+        run: yarn --frozen-lockfile
+      - name: Lint
+        run: yarn lint
   test:
     runs-on: ubuntu-latest
     strategy:
@@ -20,4 +36,15 @@ jobs:
       - name: Install React & Immutable  
         run: yarn add --dev react@${{ matrix.react-version }} react-dom@${{ matrix.react-version }} immutable@${{ matrix.immutable-version }}
       - name: Test (React ${{ matrix.react-version}}, Immutable ${{ matrix.immutable-version }})
-        run: yarn test 
+        run: yarn test
+  coverage:
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install dependencies
+        run: yarn --frozen-lockfile
+      - name: Coverage
+        run: echo "Codecov"
+        # TODO: Codecov.
+
