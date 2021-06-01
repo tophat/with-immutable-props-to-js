@@ -18,6 +18,6 @@ jobs:
       - name: Install dependencies
         run: yarn --frozen-lockfile
       - name: Install React & Immutable  
-        run: yarn add --dev react@${{ matrix.react-version }} react-dom@${{ matrix.react-version }} immutable@${{ matrix.immutable-version }})
+        run: yarn add --dev react@${{ matrix.react-version }} react-dom@${{ matrix.react-version }} immutable@${{ matrix.immutable-version }}
       - name: Test (React ${{ matrix.react-version}}, Immutable ${{ matrix.immutable-version }})
         run: yarn test 
