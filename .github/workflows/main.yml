@@ -1,0 +1,21 @@
+on:
+  pull_request:
+  push:
+    branches: master
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        include:
+          - react-version: "^16"
+            immutable-version: "^3"
+          - react-version: "^16"
+            immutable-version: "^4.0.0-rc.1"
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install dependencies
+        run: yarn add --dev react@${{ matrix.include.react-version }} react-dom@${{ matrix.include.react-version }} immutable@${{ matrix.include.immutable-version }}
+      - name: Test (React ${{ matrix.include.react-version}}, Immutable ${{ matrix.include.immutable-version }}
+        run: yarn test 
