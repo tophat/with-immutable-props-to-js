@@ -16,6 +16,8 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Install dependencies
-        run: yarn add --dev react@${{ matrix.include.react-version }} react-dom@${{ matrix.include.react-version }} immutable@${{ matrix.include.immutable-version }}
-      - name: Test (React ${{ matrix.include.react-version}}, Immutable ${{ matrix.include.immutable-version }}
+        run: yarn --frozen-lockfile
+      - name: Install React & Immutable  
+        run: yarn add --dev react@${{ matrix.react-version }} react-dom@${{ matrix.react-version }} immutable@${{ matrix.immutable-version }})
+      - name: Test (React ${{ matrix.react-version}}, Immutable ${{ matrix.immutable-version }})
         run: yarn test 
