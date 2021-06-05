@@ -65,6 +65,5 @@ jobs:
         with:
           name: website-build
           path: website/build
-        run: yarn --frozen-lockfile
 
 
