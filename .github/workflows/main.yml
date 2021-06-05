@@ -61,7 +61,7 @@ jobs:
         run: |
           yarn
           yarn build
-      - uses: upload-artifact@v2
+      - uses: actions/upload-artifact@v2
         with:
           name: website-build
           path: website/build
