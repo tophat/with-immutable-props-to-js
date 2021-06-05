@@ -52,3 +52,19 @@ jobs:
         with:
           name: test-coverage
       - run: yarn coverage
+  website:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install dependencies
+        working-directory: website
+        run: |
+          yarn
+          yarn build
+      - uses: upload-artifact@v2
+        with:
+          name: website-build
+          path: website/build
+        run: yarn --frozen-lockfile
+
+
