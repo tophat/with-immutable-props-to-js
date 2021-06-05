@@ -65,5 +65,21 @@ jobs:
         with:
           name: website-build
           path: website/build
+  website_deploy:
+    runs-on: ubuntu-latest
+    needs: website
+    if: ${{ github.ref == 'master' }}
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/download-artifact@v2
+        with:
+          name: website-build
+      - name: Install dependencies
+        working-directory: website
+        run: |
+          yarn
+          git config --global user.email "ci-immutable-props@users.noreply.github.com"
+          git config --global user.name "CI Immutable Props"
+          yarn publish-gh-pages
 
 
