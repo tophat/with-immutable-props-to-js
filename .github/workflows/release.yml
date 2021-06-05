@@ -1,0 +1,30 @@
+name: release
+
+on:
+    push:
+        tags:
+            - 'v*'
+
+jobs:
+  release:
+    name: Release
+    runs-on: ubuntu-latest 
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: Node setup
+      uses: actions/setup-node@v2
+      with:
+        node-version: 14
+    - name: Prepare
+      run: |
+        yarn
+        yarn test
+        yarn build
+    - name: get tag
+      id: get_tag
+      run: echo ::set-output name=tag::${GITHUB_REF#refs/*/v}
+    - name: Release
+      env:
+        NPM_AUTH_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}
+      run: yarn publish --access public --tag latest --new-version ${{steps.get_tag.outputs.tag}}
